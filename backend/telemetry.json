@@ -1,0 +1,146 @@
+{
+    "NVIDIA: Nemotron 3 Super (free)": {
+        "calls": 114,
+        "success": 87,
+        "failures": 27,
+        "avg_latency": 20.20998730804547
+    },
+    "nvidia/nemotron-3-super-120b-a12b:free": {
+        "calls": 11,
+        "success": 9,
+        "failures": 2,
+        "avg_latency": 8.293636955553666
+    },
+    "google/gemma-4-26b-a4b-it:free": {
+        "calls": 2,
+        "success": 0,
+        "failures": 2,
+        "avg_latency": 0
+    },
+    "google/gemma-4-31b-it:free": {
+        "calls": 2,
+        "success": 0,
+        "failures": 2,
+        "avg_latency": 0
+    },
+    "openrouter/free": {
+        "calls": 2,
+        "success": 0,
+        "failures": 2,
+        "avg_latency": 0
+    },
+    "openai/gpt-oss-20b:free": {
+        "calls": 2,
+        "success": 0,
+        "failures": 2,
+        "avg_latency": 0
+    },
+    "Google: Gemma 4 26B A4B  (free)": {
+        "calls": 23,
+        "success": 0,
+        "failures": 23,
+        "avg_latency": 0
+    },
+    "Google: Gemma 4 31B (free)": {
+        "calls": 21,
+        "success": 0,
+        "failures": 21,
+        "avg_latency": 0
+    },
+    "Free Models Router": {
+        "calls": 20,
+        "success": 0,
+        "failures": 20,
+        "avg_latency": 0
+    },
+    "OpenAI: gpt-oss-20b (free)": {
+        "calls": 20,
+        "success": 0,
+        "failures": 20,
+        "avg_latency": 0
+    },
+    "Cohere: North Mini Code (free)": {
+        "calls": 13,
+        "success": 11,
+        "failures": 2,
+        "avg_latency": 86.23109852726867
+    },
+    "NVIDIA: Nemotron Nano 9B V2 (free)": {
+        "calls": 34,
+        "success": 10,
+        "failures": 24,
+        "avg_latency": 33.4462452099895
+    },
+    "NVIDIA: Nemotron 3 Ultra (free)": {
+        "calls": 5,
+        "success": 2,
+        "failures": 3,
+        "avg_latency": 69.6887333499908
+    },
+    "NVIDIA: Nemotron 3 Nano Omni (free)": {
+        "calls": 4,
+        "success": 0,
+        "failures": 4,
+        "avg_latency": 0
+    },
+    "NVIDIA: Nemotron 3 Nano 30B A3B (free)": {
+        "calls": 4,
+        "success": 0,
+        "failures": 4,
+        "avg_latency": 0
+    },
+    "NVIDIA: Nemotron Nano 12B 2 VL (free)": {
+        "calls": 4,
+        "success": 0,
+        "failures": 4,
+        "avg_latency": 0
+    },
+    "Groq: Llama 3.3 70B": {
+        "calls": 19,
+        "success": 18,
+        "failures": 1,
+        "avg_latency": 0.5661703444434857
+    },
+    "Google: Lyria 3 Pro Preview": {
+        "calls": 2,
+        "success": 2,
+        "failures": 0,
+        "avg_latency": 36.522196599980816
+    },
+    "Groq: Qwen3 32B": {
+        "calls": 1,
+        "success": 0,
+        "failures": 1,
+        "avg_latency": 0
+    },
+    "Groq: DeepSeek R1 Distill": {
+        "calls": 1,
+        "success": 0,
+        "failures": 1,
+        "avg_latency": 0
+    },
+    "NVIDIA: Nemotron 3.5 Content Safety (free)": {
+        "calls": 1,
+        "success": 0,
+        "failures": 1,
+        "avg_latency": 0
+    },
+    "Ling-3.0-flash (free)": {
+        "calls": 1,
+        "success": 0,
+        "failures": 1,
+        "avg_latency": 0
+    },
+    "Poolside: Laguna S 2.1 (free)": {
+        "calls": 1,
+        "success": 1,
+        "failures": 0,
+        "avg_latency": 6.030398599999899
+    },
+    "Z.ai: GLM 5.2 (free)": {
+        "calls": 2,
+        "success": 2,
+        "failures": 0,
+        "avg_latency": 10.367833950003842
+    }
+}

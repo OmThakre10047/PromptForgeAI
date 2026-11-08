@@ -1,0 +1,661 @@
+[
+  {
+    "problem": "\nGiven an integer n followed by n integers,\nfind the maximum subarray sum.\n\nInput\nn\na1 a2 ... an\n\nOutput\nMaximum subarray sum.\n",
+    "status": "accepted",
+    "plan": {
+      "category": "Arrays",
+      "difficulty": "Medium",
+      "algorithm": "Kadane's Algorithm",
+      "time_complexity": "O(n)",
+      "space_complexity": "O(1)",
+      "edge_cases": [
+        "Single element",
+        "All negative values",
+        "Zero values in array",
+        "Maximum sum at end of array"
+      ],
+      "strategy": "Iterate through the array while maintaining the current maximum sum and the global maximum sum. At each step, decide whether to extend the current subarray or start a new one. The algorithm optimally finds the maximum sum in linear time by comparing the current element alone or the current element added to the previous sum. Corner cases include handling all-negative inputs and single-element arrays naturally.",
+      "sample_tests": [
+        {
+          "input": "3\n1 2 3",
+          "expected_output": "6"
+        },
+        {
+          "input": "3\n-1 -2 -3",
+          "expected_output": "-1"
+        },
+        {
+          "input": "6\n4 -1 2 1 -5 4",
+          "expected_output": "6"
+        },
+        {
+          "input": "1\n5",
+          "expected_output": "5"
+        }
+      ]
+    },
+    "solution": "```cpp\n#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    // Faster I/O for competitive programming\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    int n;\n    // Read the size of the array\n    if (!(cin >> n)) return 0; // No input\n    if (n == 0) {\n        // Edge case: empty array -> maximum subarray sum is 0\n        cout << 0 << '\\n';\n        return 0;\n    }\n\n    long long current_max, global_max; // Use long long to avoid overflow\n    long long x;\n\n    // Initialize with the first element\n    cin >> x;\n    current_max = global_max = x;\n\n    // Kadane's algorithm: process remaining elements\n    for (int i = 1; i < n; ++i) {\n        cin >> x;\n        // Either start a new subarray at x or extend the previous one\n        current_max = max(x, current_max + x);\n        // Update the global maximum\n        global_max = max(global_max, current_max);\n    }\n\n    // Output the maximum subarray sum\n    cout << global_max << '\\n';\n    return 0;\n}\n```",
+    "execution": {
+      "compiled": true,
+      "ran": true,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "compile_time": 0.588,
+      "run_time": 0.0,
+      "passed_tests": 10,
+      "total_tests": 10,
+      "test_outputs": [
+        "INPUT:\n4\n-5 -7 -3 -2\nEXPECTED:\n-2\nACTUAL:\n-2\nSTDERR:\n\nRUN_TIME:0.032",
+        "INPUT:\n1\n0\nEXPECTED:\n0\nACTUAL:\n0\nSTDERR:\n\nRUN_TIME:0.03",
+        "INPUT:\n5\n0 0 0 0 0\nEXPECTED:\n0\nACTUAL:\n0\nSTDERR:\n\nRUN_TIME:0.033",
+        "INPUT:\n1\n5\nEXPECTED:\n5\nACTUAL:\n5\nSTDERR:\n\nRUN_TIME:0.034",
+        "INPUT:\n3\n2 3 4\nEXPECTED:\n9\nACTUAL:\n9\nSTDERR:\n\nRUN_TIME:0.032",
+        "INPUT:\n3\n4 -5 3\nEXPECTED:\n4\nACTUAL:\n4\nSTDERR:\n\nRUN_TIME:0.034",
+        "INPUT:\n9\n-2 1 -3 4 -1 2 1 -5 4\nEXPECTED:\n6\nACTUAL:\n6\nSTDERR:\n\nRUN_TIME:0.035",
+        "INPUT:\n10\n-1 -1 -1 -1 -1 -1 -1 -1 -1 1000\nEXPECTED:\n1000\nACTUAL:\n1000\nSTDERR:\n\nRUN_TIME:0.038",
+        "INPUT:\n5\n10 -1 2 -1 5\nEXPECTED:\n15\nACTUAL:\n15\nSTDERR:\n\nRUN_TIME:0.036",
+        "INPUT:\n3\n-5 -3 4\nEXPECTED:\n4\nACTUAL:\n4\nSTDERR:\n\nRUN_TIME:0.036"
+      ]
+    },
+    "review": {
+      "overall_score": 100,
+      "correctness": 100,
+      "efficiency": 100,
+      "edge_cases": 100,
+      "code_quality": 100,
+      "explanation": 100,
+      "issues": [],
+      "recommendation": "ACCEPT",
+      "passed_tests": 10,
+      "total_tests": 10
+    },
+    "trace": [
+      {
+        "agent": "PlannerAgent",
+        "model": "nvidia/nemotron-nano-9b-v2:free",
+        "latency": 31.23
+      },
+      {
+        "agent": "SolverAgent",
+        "model": "cohere/north-mini-code:free",
+        "latency": 67.74
+      },
+      {
+        "agent": "TesterAgent",
+        "model": "nvidia/nemotron-nano-9b-v2:free",
+        "latency": 61.22
+      },
+      {
+        "agent": "ReviewerAgent",
+        "model": "nvidia/nemotron-3-super-120b-a12b:free",
+        "latency": 8.07
+      }
+    ]
+  },
+  {
+    "problem": "\nGiven an integer n followed by n integers,\nfind the maximum subarray sum.\n\nInput\nn\na1 a2 ... an\n\nOutput\nMaximum subarray sum.\n",
+    "status": "max_repairs_reached",
+    "plan": {
+      "category": "Arrays",
+      "difficulty": "Medium",
+      "algorithm": "Kadane's Algorithm",
+      "time_complexity": "O(n)",
+      "space_complexity": "O(1)",
+      "edge_cases": [
+        "All negative numbers",
+        "Single element",
+        "Maximum subarray at the beginning",
+        "Maximum subarray at the end",
+        "Zero values in the array"
+      ],
+      "strategy": "Iterate through the array while maintaining the maximum sum of the subarray ending at the current position and the global maximum sum. For each element, update the current maximum to be the maximum of the current element itself or the sum of the current element and the previous current maximum. Update the global maximum whenever the current maximum exceeds it. This ensures that both contiguous subarrays and single elements are considered.",
+      "sample_tests": [
+        {
+          "input": "3\n1 -2 3",
+          "expected_output": "3"
+        },
+        {
+          "input": "3\n-5 -3 -2",
+          "expected_output": "-2"
+        },
+        {
+          "input": "1\n7",
+          "expected_output": "7"
+        }
+      ]
+    },
+    "solution": "#include <iostream>\n#include <algorithm>\n#include <climits>\n\nint main() {\n    int n;\n    std::cin >> n;\n\n    if (n == 0) {\n        std::cout << 0;\n        return 0;\n    }\n\n    long long maxSoFar = LLONG_MIN;\n    long long maxEndingHere = LLONG_MIN;\n\n    for (int i = 0; i < n; ++i) {\n        long long x;\n        std::cin >> x;\n        maxEndingHere = std::max(x, maxEndingHere + x);\n        maxSoFar = std::max(maxSoFar, maxEndingHere);\n    }\n\n    std::cout << maxSoFar;\n    return 0;\n}",
+    "execution": {
+      "compiled": true,
+      "ran": true,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "compile_time": 0.741,
+      "run_time": 0.0,
+      "passed_tests": 7,
+      "total_tests": 10,
+      "test_outputs": [
+        "INPUT:\n3\n-5 -3 -1\nEXPECTED:\n-1\nACTUAL:\n9223372036854775803\nSTDERR:\n\nRUN_TIME:0.032",
+        "INPUT:\n5\n1 2 3 4 5\nEXPECTED:\n15\nACTUAL:\n15\nSTDERR:\n\nRUN_TIME:0.027",
+        "INPUT:\n1\n7\nEXPECTED:\n7\nACTUAL:\n7\nSTDERR:\n\nRUN_TIME:0.032",
+        "INPUT:\n3\n5 -10 3\nEXPECTED:\n3\nACTUAL:\n5\nSTDERR:\n\nRUN_TIME:0.028",
+        "INPUT:\n3\n3 2 1\nEXPECTED:\n6\nACTUAL:\n6\nSTDERR:\n\nRUN_TIME:0.031",
+        "INPUT:\n3\n0 0 0\nEXPECTED:\n0\nACTUAL:\n0\nSTDERR:\n\nRUN_TIME:0.03",
+        "INPUT:\n5\n10 -5 6 -20 7\nEXPECTED:\n6\nACTUAL:\n11\nSTDERR:\n\nRUN_TIME:0.03",
+        "INPUT:\n3\n2 -3 2\nEXPECTED:\n2\nACTUAL:\n2\nSTDERR:\n\nRUN_TIME:0.029",
+        "INPUT:\n1\n100000\nEXPECTED:\n100000\nACTUAL:\n100000\nSTDERR:\n\nRUN_TIME:0.027",
+        "INPUT:\n5\n3 -1 2 -1 4\nEXPECTED:\n7\nACTUAL:\n7\nSTDERR:\n\nRUN_TIME:0.027"
+      ]
+    },
+    "review": {
+      "overall_score": 69,
+      "correctness": 70,
+      "efficiency": 80,
+      "edge_cases": 50,
+      "code_quality": 80,
+      "explanation": 60,
+      "issues": [
+        "maxEndingHere and maxSoFar are initialized with LLONG_MIN instead of the first input",
+        "This causes issues when all numbers in the input array are negative",
+        "Algorithm does not handle this edge case correctly"
+      ],
+      "recommendation": "REVISE",
+      "passed_tests": 7,
+      "total_tests": 10
+    },
+    "trace": [
+      {
+        "agent": "PlannerAgent",
+        "model": "nvidia/nemotron-nano-9b-v2:free",
+        "latency": 21.78
+      },
+      {
+        "agent": "SolverAgent",
+        "model": "cohere/north-mini-code:free",
+        "latency": 67.97
+      },
+      {
+        "agent": "TesterAgent",
+        "model": "nvidia/nemotron-nano-9b-v2:free",
+        "latency": 67.08
+      },
+      {
+        "agent": "ReviewerAgent",
+        "model": "nvidia/nemotron-3-super-120b-a12b:free",
+        "latency": 178.03
+      },
+      {
+        "agent": "RepairAgent",
+        "model": "llama-3.3-70b-versatile",
+        "latency": 22.36
+      },
+      {
+        "agent": "ReviewerAgent",
+        "model": "llama-3.3-70b-versatile",
+        "latency": 11.55
+      },
+      {
+        "agent": "RepairAgent",
+        "model": "llama-3.3-70b-versatile",
+        "latency": 19.95
+      },
+      {
+        "agent": "ReviewerAgent",
+        "model": "llama-3.3-70b-versatile",
+        "latency": 10.55
+      },
+      {
+        "agent": "RepairAgent",
+        "model": "llama-3.3-70b-versatile",
+        "latency": 21.91
+      },
+      {
+        "agent": "ReviewerAgent",
+        "model": "llama-3.3-70b-versatile",
+        "latency": 10.91
+      },
+      {
+        "agent": "RepairAgent",
+        "model": "llama-3.3-70b-versatile",
+        "latency": 20.34
+      },
+      {
+        "agent": "ReviewerAgent",
+        "model": "llama-3.3-70b-versatile",
+        "latency": 10.15
+      },
+      {
+        "agent": "RepairAgent",
+        "model": "llama-3.3-70b-versatile",
+        "latency": 20.68
+      },
+      {
+        "agent": "ReviewerAgent",
+        "model": "llama-3.3-70b-versatile",
+        "latency": 11.5
+      }
+    ]
+  },
+  {
+    "problem": "Given an array of integers, return the maximum subarray sum.",
+    "status": "accepted",
+    "plan": {
+      "category": "Greedy",
+      "difficulty": "Easy",
+      "algorithm": "Kadane's Algorithm",
+      "time_complexity": "O(n)",
+      "space_complexity": "O(1)",
+      "edge_cases": [
+        "All negative values",
+        "Single element",
+        "Empty array",
+        "Large numbers causing overflow",
+        "Maximum subarray at the start or end"
+      ],
+      "strategy": "Iterate through the array while maintaining two variables: current_sum (maximum sum ending at current position) and max_sum (overall maximum). For each element, update current_sum as the maximum of the element itself or current_sum + element. Update max_sum accordingly. This greedy choice ensures optimal subarray tracking in linear time with constant space.",
+      "sample_tests": [
+        {
+          "input": "[1, -2, 3, 4, -5, 6]",
+          "expected_output": "8"
+        },
+        {
+          "input": "[-2, -3, -1]",
+          "expected_output": "-1"
+        },
+        {
+          "input": "[5]",
+          "expected_output": "5"
+        },
+        {
+          "input": "[-1, 0, -2, 3]",
+          "expected_output": "3"
+        },
+        {
+          "input": "[-5, -2]",
+          "expected_output": "-2"
+        }
+      ]
+    },
+    "solution": "```cpp\n#include <iostream>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    // Kadane's algorithm for maximum subarray sum\n    long long max_sum;          // overall maximum subarray sum\n    long long current_sum;      // maximum sum of subarray ending at current position\n    bool first = true;          // flag to handle the first element\n    long long x;\n\n    // Read all integers from input until EOF\n    while (cin >> x) {\n        if (first) {\n            // First element initializes both current_sum and max_sum\n            current_sum = x;\n            max_sum = x;\n            first = false;\n        } else {\n            // Update current_sum: either start new subarray at x or extend previous\n            current_sum = max(x, current_sum + x);\n            // Update overall maximum\n            max_sum = max(max_sum, current_sum);\n        }\n    }\n\n    // Handle empty input (no numbers)\n    if (first) {\n        cout << 0 << endl;\n    } else {\n        cout << max_sum << endl;\n    }\n\n    return 0;\n}\n```",
+    "execution": {
+      "compiled": true,
+      "ran": true,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "compile_time": 1.942,
+      "run_time": 0.0,
+      "passed_tests": 10,
+      "total_tests": 10,
+      "test_outputs": [
+        "INPUT:\n5 6 7\nEXPECTED:\n18\nACTUAL:\n18\nSTDERR:\n\nRUN_TIME:0.074",
+        "INPUT:\n-1 -2 -3\nEXPECTED:\n-1\nACTUAL:\n-1\nSTDERR:\n\nRUN_TIME:0.028",
+        "INPUT:\n0 0 0\nEXPECTED:\n0\nACTUAL:\n0\nSTDERR:\n\nRUN_TIME:0.03",
+        "INPUT:\n9\nEXPECTED:\n9\nACTUAL:\n9\nSTDERR:\n\nRUN_TIME:0.028",
+        "INPUT:\n-5\nEXPECTED:\n-5\nACTUAL:\n-5\nSTDERR:\n\nRUN_TIME:0.03",
+        "INPUT:\n-3 -2 4\nEXPECTED:\n4\nACTUAL:\n4\nSTDERR:\n\nRUN_TIME:0.029",
+        "INPUT:\n3 -1 4\nEXPECTED:\n6\nACTUAL:\n6\nSTDERR:\n\nRUN_TIME:0.03",
+        "INPUT:\n1 2 -1 3\nEXPECTED:\n5\nACTUAL:\n5\nSTDERR:\n\nRUN_TIME:0.027",
+        "INPUT:\n1000000 1000000 1000000\nEXPECTED:\n3000000\nACTUAL:\n3000000\nSTDERR:\n\nRUN_TIME:0.029",
+        "INPUT:\n2 -5 6 -2 3\nEXPECTED:\n7\nACTUAL:\n7\nSTDERR:\n\nRUN_TIME:0.028"
+      ]
+    },
+    "review": {
+      "overall_score": 97,
+      "correctness": 100,
+      "efficiency": 100,
+      "edge_cases": 95,
+      "code_quality": 90,
+      "explanation": 90,
+      "issues": [
+        "Uses 'using namespace std;' which can cause name collisions in larger projects.",
+        "Variables max_sum and current_sum are not explicitly initialized; though safe, it may trigger compiler warnings.",
+        "No comments on algorithm complexity.",
+        "Does not handle potential overflow beyond long long; but constraints unknown."
+      ],
+      "recommendation": "ACCEPT",
+      "passed_tests": 10,
+      "total_tests": 10
+    },
+    "trace": [
+      {
+        "agent": "PlannerAgent",
+        "model": "nvidia/nemotron-nano-9b-v2:free",
+        "latency": 24.54
+      },
+      {
+        "agent": "SolverAgent",
+        "model": "cohere/north-mini-code:free",
+        "latency": 250.18
+      },
+      {
+        "agent": "TesterAgent",
+        "model": "nvidia/nemotron-nano-9b-v2:free",
+        "latency": 104.22
+      },
+      {
+        "agent": "ReviewerAgent",
+        "model": "nvidia/nemotron-3-super-120b-a12b:free",
+        "latency": 9.65
+      }
+    ]
+  },
+  {
+    "problem": "Solve the maximum subarray sum problem using kadane's algorithm",
+    "status": "accepted",
+    "plan": {
+      "category": "Arrays",
+      "difficulty": "Medium",
+      "algorithm": "Kadane's Algorithm",
+      "time_complexity": "O(n)",
+      "space_complexity": "O(1)",
+      "edge_cases": [
+        "Empty input",
+        "Single element",
+        "All negative numbers",
+        "Large input size",
+        "Potential integer overflow"
+      ],
+      "strategy": "Initialize max_ending_here and max_so_far with the first element. Iterate through the remaining elements, updating max_ending_here to be the maximum of the current element and the sum of max_ending_here plus the current element. Update max_so_far whenever max_ending_here exceeds it. Return max_so_far. This greedy approach ensures the optimal subarray sum is found in linear time with constant extra space. Handle the empty input case by returning 0 or raising an error as per problem definition. Be careful with all\u2011negative arrays, where the answer is the largest (least negative) element.",
+      "sample_tests": [
+        {
+          "input": "1 -2 3 5 -1 2",
+          "expected_output": "8"
+        },
+        {
+          "input": "-5 -2 -3",
+          "expected_output": "-2"
+        },
+        {
+          "input": "42",
+          "expected_output": "42"
+        }
+      ]
+    },
+    "solution": "#include <iostream>\n#include <algorithm>\n\nint main() {\n    std::ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n\n    // Read the number of elements in the array.\n    long long n;\n    if (!(std::cin >> n)) {\n        // No input provided.\n        std::cout << 0;\n        return 0;\n    }\n\n    // Handle empty array.\n    if (n == 0) {\n        std::cout << 0;\n        return 0;\n    }\n\n    // Read the first element to initialise Kadane's variables.\n    long long first;\n    if (!(std::cin >> first)) {\n        // Expected at least one element but none were given.\n        std::cout << 0;\n        return 0;\n    }\n\n    long long max_ending_here = first; // Maximum sum of subarray ending at current position.\n    long long max_so_far = first;      // Overall maximum subarray sum found so far.\n\n    bool sufficient_input = true;\n    // Process the remaining n-1 elements.\n    for (long long i = 1; i < n; ++i) {\n        long long val;\n        if (!(std::cin >> val)) {\n            // Input ended prematurely; we cannot guarantee correctness.\n            sufficient_input = false;\n            break;\n        }\n        // Either extend the previous subarray or start a new one at current element.\n        max_ending_here = std::max(val, max_ending_here + val);\n        // Update the global maximum if needed.\n        if (max_ending_here > max_so_far) {\n            max_so_far = max_ending_here;\n        }\n    }\n\n    // Output the result only if we successfully read all expected numbers.\n    if (sufficient_input) {\n        std::cout << max_so_far;\n    } else {\n        // Incomplete input: defined behaviour is to return 0.\n        std::cout << 0;\n    }\n\n    return 0;\n}",
+    "execution": {
+      "compiled": true,
+      "ran": true,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "compile_time": 1.088,
+      "run_time": 0.0,
+      "passed_tests": 10,
+      "total_tests": 10,
+      "test_outputs": [
+        "INPUT:\n1\n5\nEXPECTED:\n5\nACTUAL:\n5\nSTDERR:\n\nRUN_TIME:0.036",
+        "INPUT:\n1\n-3\nEXPECTED:\n-3\nACTUAL:\n-3\nSTDERR:\n\nRUN_TIME:0.031",
+        "INPUT:\n1\n0\nEXPECTED:\n0\nACTUAL:\n0\nSTDERR:\n\nRUN_TIME:0.027",
+        "INPUT:\n5\n-2 -3 -1 -4 -6\nEXPECTED:\n-1\nACTUAL:\n-1\nSTDERR:\n\nRUN_TIME:0.029",
+        "INPUT:\n5\n1 2 3 4 5\nEXPECTED:\n15\nACTUAL:\n15\nSTDERR:\n\nRUN_TIME:0.029",
+        "INPUT:\n6\n2 -1 2 3 -9 4\nEXPECTED:\n6\nACTUAL:\n6\nSTDERR:\n\nRUN_TIME:0.022",
+        "INPUT:\n9\n-2 1 -3 4 -1 2 1 -5 4\nEXPECTED:\n6\nACTUAL:\n6\nSTDERR:\n\nRUN_TIME:0.048",
+        "INPUT:\n5\n0 -1 0 3 -2\nEXPECTED:\n3\nACTUAL:\n3\nSTDERR:\n\nRUN_TIME:0.097",
+        "INPUT:\n3\n1000000000 1000000000 -1000000000\nEXPECTED:\n2000000000\nACTUAL:\n2000000000\nSTDERR:\n\nRUN_TIME:0.053",
+        "INPUT:\n6\n-1 -2 -3 -4 -5 -6\nEXPECTED:\n-1\nACTUAL:\n-1\nSTDERR:\n\nRUN_TIME:0.041"
+      ]
+    },
+    "review": {
+      "overall_score": 100,
+      "correctness": 100,
+      "efficiency": 100,
+      "edge_cases": 100,
+      "code_quality": 100,
+      "explanation": 100,
+      "issues": [],
+      "recommendation": "ACCEPT",
+      "passed_tests": 10,
+      "total_tests": 10
+    },
+    "trace": [
+      {
+        "agent": "PlannerAgent",
+        "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+        "latency": 20.73
+      },
+      {
+        "agent": "SolverAgent",
+        "model": "cohere/north-mini-code:free",
+        "latency": 266.44
+      },
+      {
+        "agent": "TesterAgent",
+        "model": "nvidia/nemotron-3-super-120b-a12b:free",
+        "latency": 59.56
+      },
+      {
+        "agent": "ReviewerAgent",
+        "model": "nvidia/nemotron-3-super-120b-a12b:free",
+        "latency": 34.16
+      },
+      {
+        "agent": "RepairAgent",
+        "model": "cohere/north-mini-code:free",
+        "latency": 92.8
+      },
+      {
+        "agent": "ReviewerAgent",
+        "model": "nvidia/nemotron-3-super-120b-a12b:free",
+        "latency": 23.49
+      },
+      {
+        "agent": "RepairAgent",
+        "model": "nvidia/nemotron-3-super-120b-a12b:free",
+        "latency": 5425.78
+      },
+      {
+        "agent": "ReviewerAgent",
+        "model": "poolside/laguna-s-2.1:free",
+        "latency": 35.42
+      }
+    ]
+  },
+  {
+    "problem": "Solve the maximum subarray sum problem",
+    "status": "accepted",
+    "plan": {
+      "category": "Arrays",
+      "difficulty": "Easy",
+      "algorithm": "Kadane's Algorithm",
+      "time_complexity": "O(n)",
+      "space_complexity": "O(1)",
+      "edge_cases": [
+        "Empty array",
+        "Single element",
+        "All negative numbers",
+        "All positive numbers",
+        "Maximum subarray at the boundaries"
+      ],
+      "strategy": "Use Kadane's algorithm: iterate through the array while maintaining a running sum. At each element, decide whether to extend the current subarray or start a new one from the current element (i.e., current_sum = max(nums[i], current_sum + nums[i])). Update the global maximum at each step. Initialize both current_sum and global_max to the first element (or 0 if empty, depending on requirements). This achieves O(n) time and O(1) space, which is optimal for this problem as every element must be inspected at least once. Key corner cases: handle all-negative arrays by initializing max to the first element rather than 0, and handle empty input by returning 0 or throwing an error based on problem constraints.",
+      "sample_tests": [
+        {
+          "input": "[-2,1,-3,4,-1,2,1,-5,4]",
+          "expected_output": "6"
+        },
+        {
+          "input": "[1]",
+          "expected_output": "1"
+        },
+        {
+          "input": "[-3,-1,-2]",
+          "expected_output": "-1"
+        },
+        {
+          "input": "[5,4,-1,7,8]",
+          "expected_output": "23"
+        }
+      ]
+    },
+    "solution": "```cpp\n#include <iostream>\n#include <algorithm> // for std::max\n\nint main() {\n    // Time Complexity: O(n)\n    // Space Complexity: O(1)\n    int n;\n    std::cin >> n;\n    if (n == 0) {\n        // Handle empty array: according to plan, return 0.\n        std::cout << 0 << '\\n';\n        return 0;\n    }\n    long long current_sum, max_sum;\n    // Read the first element\n    std::cin >> current_sum;\n    max_sum = current_sum;\n    // Process the rest of the elements\n    for (int i = 1; i < n; ++i) {\n        long long x;\n        std::cin >> x;\n        // Kadane's algorithm: either start new subarray at x or extend current\n        current_sum = std::max(x, current_sum + x);\n        max_sum = std::max(max_sum, current_sum);\n    }\n    std::cout << max_sum << '\\n';\n    return 0;\n}\n```",
+    "execution": {
+      "compiled": true,
+      "ran": true,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "compile_time": 1.626,
+      "run_time": 0.0,
+      "passed_tests": 10,
+      "total_tests": 10,
+      "test_outputs": [
+        "INPUT:\n1\n42\nEXPECTED:\n42\nACTUAL:\n42\nSTDERR:\n\nRUN_TIME:0.05",
+        "INPUT:\n1\n-7\nEXPECTED:\n-7\nACTUAL:\n-7\nSTDERR:\n\nRUN_TIME:0.02",
+        "INPUT:\n5\n-1 -2 -3 -4 -5\nEXPECTED:\n-1\nACTUAL:\n-1\nSTDERR:\n\nRUN_TIME:0.025",
+        "INPUT:\n4\n0 0 0 0\nEXPECTED:\n0\nACTUAL:\n0\nSTDERR:\n\nRUN_TIME:0.021",
+        "INPUT:\n5\n-1 2 3 -1 2\nEXPECTED:\n6\nACTUAL:\n6\nSTDERR:\n\nRUN_TIME:0.022",
+        "INPUT:\n3\n1000000000 1000000000 1000000000\nEXPECTED:\n3000000000\nACTUAL:\n3000000000\nSTDERR:\n\nRUN_TIME:0.021",
+        "INPUT:\n4\n1 2 3 4\nEXPECTED:\n10\nACTUAL:\n10\nSTDERR:\n\nRUN_TIME:0.021",
+        "INPUT:\n7\n-2 1 -3 4 -1 2 1\nEXPECTED:\n6\nACTUAL:\n6\nSTDERR:\n\nRUN_TIME:0.021",
+        "INPUT:\n6\n5 -1 5 -1 5 -1\nEXPECTED:\n13\nACTUAL:\n13\nSTDERR:\n\nRUN_TIME:0.022",
+        "INPUT:\n8\n-10 0 -5 3 8 -2 6 -7\nEXPECTED:\n15\nACTUAL:\n15\nSTDERR:\n\nRUN_TIME:0.021"
+      ]
+    },
+    "review": {
+      "overall_score": 99,
+      "correctness": 100,
+      "efficiency": 100,
+      "edge_cases": 100,
+      "code_quality": 95,
+      "explanation": 100,
+      "issues": [],
+      "recommendation": "ACCEPT",
+      "passed_tests": 10,
+      "total_tests": 10
+    },
+    "trace": [
+      {
+        "agent": "PlannerAgent",
+        "model": "nvidia/nemotron-3.5-lightning:free",
+        "latency": 35.5
+      },
+      {
+        "agent": "SolverAgent",
+        "model": "cohere/north-mini-code:free",
+        "latency": 21.3
+      },
+      {
+        "agent": "TesterAgent",
+        "model": "minimax/minimax-m2.7:free",
+        "latency": 50.86
+      },
+      {
+        "agent": "ReviewerAgent",
+        "model": "nvidia/nemotron-3-super-120b-a12b:free",
+        "latency": 23.67
+      }
+    ]
+  },
+  {
+    "problem": "Solve the maximum subarray sum problem",
+    "status": "accepted",
+    "plan": {
+      "category": "Dynamic Programming",
+      "difficulty": "Easy",
+      "algorithm": "Kadane's Algorithm",
+      "time_complexity": "O(n)",
+      "space_complexity": "O(1)",
+      "edge_cases": [
+        "All negative numbers - return maximum element",
+        "Empty array - handle gracefully",
+        "Single element array",
+        "All positive numbers",
+        "Mixed positive and negative numbers",
+        "Large input values requiring overflow handling"
+      ],
+      "strategy": "Use Kadane's algorithm which is optimal for this problem. Initialize two variables: max_ending_here (current subarray sum ending at current position) and max_so_far (overall maximum sum found). At each element, either extend the existing subarray or start a fresh one from the current element. Update max_so_far whenever max_ending_here exceeds it. For all-negative cases, ensure we track the maximum (least negative) value. The algorithm runs in single pass with constant extra space.",
+      "sample_tests": [
+        {
+          "input": "[-2,1,-3,4,-1,2,1,-5,4]",
+          "expected_output": "6"
+        },
+        {
+          "input": "[1]",
+          "expected_output": "1"
+        },
+        {
+          "input": "[-1,-2,-3]",
+          "expected_output": "-1"
+        },
+        {
+          "input": "[5,4,-1,7,8]",
+          "expected_output": "23"
+        },
+        {
+          "input": "[-2,-1]",
+          "expected_output": "-1"
+        }
+      ]
+    },
+    "solution": "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <climits>\nusing namespace std;\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    int n;\n    cin >> n;\n\n    if (n <= 0) {\n        cout << 0 << endl;\n        return 0;\n    }\n\n    long long max_ending_here = 0;\n    long long max_so_far = LLONG_MIN;\n\n    for (int i = 0; i < n; i++) {\n        long long x;\n        cin >> x;\n\n        if (max_ending_here < 0) {\n            max_ending_here = x;\n        } else {\n            max_ending_here += x;\n        }\n\n        max_so_far = max(max_so_far, max_ending_here);\n    }\n\n    cout << max_so_far << endl;\n\n    return 0;\n}",
+    "execution": {
+      "compiled": true,
+      "ran": true,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "compile_time": 0.582,
+      "run_time": 0.0,
+      "passed_tests": 10,
+      "total_tests": 10,
+      "test_outputs": [
+        "INPUT:\n1\n-5\nEXPECTED:\n-5\nACTUAL:\n-5\nSTDERR:\n\nRUN_TIME:0.03",
+        "INPUT:\n1\n10\nEXPECTED:\n10\nACTUAL:\n10\nSTDERR:\n\nRUN_TIME:0.016",
+        "INPUT:\n5\n-5 -4 -3 -2 -1\nEXPECTED:\n-1\nACTUAL:\n-1\nSTDERR:\n\nRUN_TIME:0.016",
+        "INPUT:\n4\n0 0 0 0\nEXPECTED:\n0\nACTUAL:\n0\nSTDERR:\n\nRUN_TIME:0.017",
+        "INPUT:\n3\n-1 -2 5\nEXPECTED:\n5\nACTUAL:\n5\nSTDERR:\n\nRUN_TIME:0.017",
+        "INPUT:\n6\n1 -2 3 4 -1 2\nEXPECTED:\n8\nACTUAL:\n8\nSTDERR:\n\nRUN_TIME:0.016",
+        "INPUT:\n3\n1000000000 1000000000 1000000000\nEXPECTED:\n3000000000\nACTUAL:\n3000000000\nSTDERR:\n\nRUN_TIME:0.016",
+        "INPUT:\n5\n5 -1 5 -1 5\nEXPECTED:\n13\nACTUAL:\n13\nSTDERR:\n\nRUN_TIME:0.017",
+        "INPUT:\n5\n-5 -4 10 -5 -2\nEXPECTED:\n10\nACTUAL:\n10\nSTDERR:\n\nRUN_TIME:0.016",
+        "INPUT:\n5\n-3 -2 0 -1 0\nEXPECTED:\n0\nACTUAL:\n0\nSTDERR:\n\nRUN_TIME:0.017"
+      ]
+    },
+    "review": {
+      "overall_score": 98,
+      "correctness": 100,
+      "efficiency": 100,
+      "edge_cases": 95,
+      "code_quality": 95,
+      "explanation": 100,
+      "issues": [],
+      "recommendation": "ACCEPT",
+      "passed_tests": 10,
+      "total_tests": 10
+    },
+    "trace": [
+      {
+        "agent": "PlannerAgent",
+        "model": "minimax/minimax-m2.7:free",
+        "latency": 8.07
+      },
+      {
+        "agent": "SolverAgent",
+        "model": "poolside/laguna-s-2.1:free",
+        "latency": 14.37
+      },
+      {
+        "agent": "TesterAgent",
+        "model": "minimax/minimax-m2.7:free",
+        "latency": 38.0
+      },
+      {
+        "agent": "ReviewerAgent",
+        "model": "z-ai/glm-5.2:free",
+        "latency": 13.15
+      },
+      {
+        "agent": "RepairAgent",
+        "model": "poolside/laguna-s-2.1:free",
+        "latency": 4.79
+      },
+      {
+        "agent": "ReviewerAgent",
+        "model": "z-ai/glm-5.2:free",
+        "latency": 7.59
+      }
+    ]
+  }
+]

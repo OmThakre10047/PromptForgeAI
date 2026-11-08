@@ -1,0 +1,32 @@
+[
+    {
+        "id": "qwen",
+        "display_name": "Qwen Coder",
+        "provider": "openrouter",
+        "model": "qwen/qwen3-coder:free",
+        "roles": ["developer"],
+        "enabled": true,
+        "priority": 1
+    },
+    {
+    "id": "gemma",
+    "display_name": "Gemma",
+    "provider": "google",
+    "model": "google/gemma-3-27b-it",
+    "roles": [
+        "logic_reviewer",
+        "edgecase_reviewer"
+    ],
+    "enabled": true,
+    "priority": 2
+},
+    {
+        "id": "gptoss",
+        "display_name": "GPT OSS",
+        "provider": "openrouter",
+        "model": "openai/gpt-oss-120b:free",
+        "roles": ["developer"],
+        "enabled": true,
+        "priority": 3
+    }
+]

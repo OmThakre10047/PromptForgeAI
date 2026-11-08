@@ -1,71 +1,65 @@
 from dataclasses import dataclass, field
-from typing import List, Dict, Optional
+from typing import List
 
 
 @dataclass
-class Solution:
-    model: str
-    code: str
-    explanation: str
-    language: str
-    confidence: float = 0.0
+class ProjectState:
 
+    # =========================
+    # USER INPUT
+    # =========================
 
-@dataclass
-class Review:
-    reviewer: str
-    target_model: str
-    strengths: List[str]
-    weaknesses: List[str]
-    suggestions: List[str]
-    score: float
+    task: str
 
+    # =========================
+    # PROMPTS
+    # =========================
 
-@dataclass
-class TestCase:
-    input_data: str
-    expected_output: Optional[str] = None
-    generated_by: str = "system"
+    developer_prompt: str = ""
 
+    reviewer_prompt: str = ""
 
-@dataclass
-class ExecutionResult:
-    passed: bool
-    compilation_error: bool
-    runtime_error: bool
-    execution_time: float
-    failed_testcase: Optional[TestCase] = None
-    error_message: str = ""
+    tester_prompt: str = ""
 
+    # =========================
+    # OUTPUTS
+    # =========================
 
-@dataclass
-class EngineState:
-    # User Input
-    problem: str
+    solutions: dict = field(default_factory=dict)
 
-    # Current Prompt
-    current_prompt: str = ""
+    review: str = ""
 
-    # Iteration Counter
+    reflection: str = ""
+
+    # =========================
+    # TESTING
+    # =========================
+
+    hidden_tests: List[str] = field(default_factory=list)
+
+    test_results: List[str] = field(default_factory=list)
+
+    # =========================
+    # EXECUTION
+    # =========================
+
     iteration: int = 0
 
-    # AI Solutions
-    solutions: List[Solution] = field(default_factory=list)
+    success: bool = False
 
-    # Reviews
-    reviews: List[Review] = field(default_factory=list)
+    max_iterations: int = 6
 
-    # Hidden Tests
-    hidden_tests: List[TestCase] = field(default_factory=list)
+    # =========================
+    # LOGGING
+    # =========================
 
-    # Execution
-    execution_results: List[ExecutionResult] = field(default_factory=list)
+    history: List[str] = field(default_factory=list)
 
-    # Reflection History
-    reflections: List[str] = field(default_factory=list)
+    def log(self, message: str):
+        self.history.append(message)
 
-    # Final Answer
-    final_solution: Optional[Solution] = None
+    def next_iteration(self):
+        self.iteration += 1
 
-    # Engine Status
-    solved: bool = False
+    def mark_success(self):
+        self.success = True

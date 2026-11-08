@@ -1,0 +1,13 @@
+{
+    "last_updated": null,
+    "models": [
+        {
+            "id": 1,
+            "name": "gemma"
+        },
+        {
+            "id": 2,
+            "name": "llama"
+        }
+    ]
+}

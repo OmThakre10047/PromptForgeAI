@@ -1,0 +1,17 @@
+{
+    "google": {
+        "primary": "models/gemini-3.5-flash",
+        "fallback": [
+            "models/gemini-3-flash-preview",
+            "models/gemini-2.0-flash"
+        ]
+    },
+
+    "openrouter": {
+        "primary": "deepseek/deepseek-r1-0528:free",
+        "fallback": [
+            "qwen/qwen3-coder:free",
+            "meta-llama/llama-3.3-70b-instruct:free"
+        ]
+    }
+}

@@ -1,0 +1,11 @@
+Given n integers and a target k, count the pairs of indices (i, j) with i < j and a_i + a_j = k.
+
+Input: the first line contains n and k (1 <= n <= 2*10^5, |k| <= 10^9). The second line contains n integers (|a_i| <= 10^9).
+Output: print the number of pairs.
+
+Example Input:
+5 6
+1 5 3 3 2
+
+Example Output:
+2

@@ -1,0 +1,21 @@
+{
+    "developer": {
+        "provider": "openrouter",
+        "model": "qwen/qwen3-coder:free"
+    },
+
+    "reviewer": {
+        "provider": "openrouter",
+        "model": "openai/gpt-oss-120b:free"
+    },
+
+    "tester": {
+        "provider": "openrouter",
+        "model": "meta-llama/llama-3.3-70b-instruct:free"
+    },
+
+    "reflection": {
+        "provider": "openrouter",
+        "model": "google/gemma-4-31b-it:free"
+    }
+}

@@ -3,17 +3,22 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+.pytest_cache/
+
+# Runtime data (telemetry, run history, model cache)
+backend/data/*
+!backend/data/models_cache.json
 
 # Node
 node_modules/
+.next/
 
 # Environment
 .env
 .env.*
+!.env.example
 
-# IDE
+# IDE / OS
 .vscode/
-
-# OS
 .DS_Store
 Thumbs.db
